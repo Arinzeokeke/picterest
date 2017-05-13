@@ -1,0 +1,57 @@
+API
+
+#auth
+Logging In:  POST api/v1/users/login  
+Signing Up: POST api/v1/users
+Log OUt: DELETE api/v1/users/logout
+GEt current User: GET /api/v1/user   #auth required
+Update User: PUT /api/v1/user 
+
+
+
+#pics
+No Token REquired
+All Pics:  GET api/v1/pics
+filter tags = ?user=:username, ?tag=memes, ?liked=:username ?limit=12 ?offset=0 ?order=desc||asc etc
+
+One pic: GET api/vi/pics/:id
+
+#require auth
+Pics by followed users: GET /api/v1/pics/feed
+
+Create pic: POST /api/v1/pics
+
+Update pic: PUT /api/v1/pics/:id
+
+Delete pic: DELETE /api/v1/pics/:id
+
+
+Like pic: POST /api/v1/pics/:id/like
+
+Unlike pic: DELETE /api/v1/pics/:id/like
+
+
+
+
+#GET profile
+GET /api/v1/profiles/:username
+
+Follow user
+
+POST /api/v1/profiles/:username/follow
+
+
+
+Unfollow user
+
+DELETE /api/v1/profiles/:username/follow
+
+
+
+
+
+
+
+
+
+
