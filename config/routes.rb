@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'profile/show'
+
+  get 'profile/index'
+
   scope :api, defaults: { format: :json }   do
     namespace :v1 do
   		post 'token' => 'user_token#create'
