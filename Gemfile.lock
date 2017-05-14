@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/Arinzeokeke/acts_as_follower.git
+  revision: 96a7a6652756ff1bdb5a29f10d360258b18d7bcd
+  branch: master
+  specs:
+    acts_as_follower (0.2.1)
+      activerecord (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,7 +48,6 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (4.0.0)
       activerecord (>= 4.0)
-    acts_as_follower (0.2.1)
     arel (8.0.0)
     bcrypt (3.1.11)
     builder (3.2.3)
@@ -169,7 +176,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  acts_as_follower
+  acts_as_follower!
   bcrypt (~> 3.1.7)
   byebug
   database_cleaner

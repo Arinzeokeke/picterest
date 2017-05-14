@@ -27,9 +27,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'acts_as_follower', github: 'Arinzeokeke/acts_as_follower', branch: 'master'
+
+
 
 gem 'acts-as-taggable-on' #, '~> 3.5.0'
-gem 'acts_as_follower'# , '~> 0.2.1'
 gem 'knock'
 gem 'jwt'
 gem 'rack-cors' #, '~> 0.4.0'

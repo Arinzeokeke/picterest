@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513225739) do
+ActiveRecord::Schema.define(version: 20170514071915) do
+
+  create_table "follows", force: :cascade do |t|
+    t.string "followable_type"
+    t.integer "followable_id", null: false
+    t.string "follower_type"
+    t.integer "follower_id", null: false
+    t.boolean "blocked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followable_id", "followable_type"], name: "fk_followables"
+    t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id"
+    t.index ["follower_id", "follower_type"], name: "fk_follows"
+    t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"

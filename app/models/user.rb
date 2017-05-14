@@ -1,5 +1,8 @@
 class User < ApplicationRecord
+	#Rails::VERSION::STRING
 	has_secure_password
+	acts_as_followable
+	acts_as_follower
 	validates :name, 
 	uniqueness: { case_sensitive: false }, 
 	presence: true,
