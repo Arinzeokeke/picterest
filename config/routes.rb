@@ -3,9 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
   		post 'token' => 'user_token#create'
 		resource :user, only: [:create, :show, :update, :destroy]
-		resources :profiles, only: [:index, :show] do
-			member do
-			end
+		resources :profiles,  param: :username, only: [:index, :show] do
+			resource :follow, only: %i[show create destroy]
 		end
 	end
   end 
