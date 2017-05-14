@@ -3,7 +3,7 @@ API
 #auth
 Logging In:  POST api/v1/users/login  
 Signing Up: POST api/v1/users
-Log OUt: DELETE api/v1/users/logout
+
 GEt current User: GET /api/v1/user   #auth required
 Update User: PUT /api/v1/user 
 

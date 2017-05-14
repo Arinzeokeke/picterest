@@ -13,11 +13,11 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -27,10 +27,12 @@ gem 'puma', '~> 3.7'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'acts_as_follower', github: 'Arinzeokeke/acts_as_follower', branch: 'master'
+
+
 
 gem 'acts-as-taggable-on' #, '~> 3.5.0'
-gem 'acts_as_follower'# , '~> 0.2.1'
-gem 'devise'
+gem 'knock'
 gem 'jwt'
 gem 'rack-cors' #, '~> 0.4.0'
 
