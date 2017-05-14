@@ -1,0 +1,1 @@
+json.profiles @users, partial: 'v1/profiles/user', as: :profile
