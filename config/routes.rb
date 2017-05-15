@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   		post 'token' => 'user_token#create'
 		resource :user, only: [:create, :show, :update, :destroy]
 		resources :profiles,  param: :username, only: [:index, :show] do
-			resource :follow, only: %i[show create destroy]
+			member do
+				get 'followers'
+				get 'following'
+			end
+			resource :follow,  only: %i[create destroy]
 		end
+		resources :posts
 	end
   end 
 end
