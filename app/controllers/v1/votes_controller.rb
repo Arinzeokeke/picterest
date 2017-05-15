@@ -4,12 +4,12 @@ class VotesController < ApplicationController
 
 	def create
 		@post.liked_by current_user
-		render json: {message: 'post liked'}, status: 200
+		render "v1/posts/show"
 	end
 
 	def destroy
 		@post.unliked_by current_user
-		render json: {message: 'post unliked'}, status: 200
+		render "v1/posts/show"
 	end
 
 	private
