@@ -10,7 +10,14 @@ Rails.application.routes.draw do
 			end
 			resource :follow,  only: %i[create destroy]
 		end
-		resources :posts
+		resources :posts do
+			collection do
+				get 'feed'
+				get 'liked'
+			end
+			resource :vote, only: [:create, :destroy]
+
+		end
 	end
   end 
 end

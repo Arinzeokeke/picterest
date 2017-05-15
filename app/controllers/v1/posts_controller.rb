@@ -1,15 +1,12 @@
 class PostsController < ApplicationController
-	before_action :find_post, except: [:index]
-	before_action :authenticate_user, only: [:create, :update, :destroy]
+	before_action :find_post, except: [:index, :create]
+	before_action :authenticate_user, only: [:create, :update, :destroy, :feed, :liked]
 	before_action :check_user, only: [:update, :destroy]
 
 
 	def index
-		@post = Post.all
-		if params[:user]
-			@post = @post.where(:user_id: params[:user])
-			
-	end
+		@posts = Post.all
+		filter_query
 
 	def create
 		@post = current_user.post.new(post_params)
@@ -18,6 +15,18 @@ class PostsController < ApplicationController
 		else
 			render json: { errors: @post.errors}, status: :unprocessable_entity
 		end
+	end
+
+	def feed
+		@posts = Post.includes(:user).where(user: current_user.following_users)
+		filter_query
+		render 'v1/posts/index'
+	end
+
+	def liked
+		@posts = @current_user.get_up_voted Post
+		filter_query
+		render 'v1/posts/index'
 	end
 
 	def update
@@ -52,5 +61,14 @@ class PostsController < ApplicationController
     		render json {error: "Forbidden. You are not the owner of post"}, status: 400
     		return
     	end
+    end
+
+    def filter_query
+    	if params[:user] && (user = User.find_by(name: params[:user]))
+			@posts = @posts.where(:user_id: user.id) if params[:user]
+		end
+		@posts = @posts.limit(params[:limit].to_i) if params[:limit]
+		@posts = @posts.offset(params[:offset].to_i) if params[:offset]
+		@posts = @posts.order(params[:order]) if params[:order] && ['desc', 'asc'].include?(params[:order])
     end
 end
