@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   scope :api, defaults: { format: :json }   do
     namespace :v1 do
   		post 'token' => 'user_token#create'
+  		resources :tags, only: [:index]
 		resource :user, only: [:create, :show, :update, :destroy]
 		resources :profiles,  param: :username, only: [:index, :show] do
 			member do

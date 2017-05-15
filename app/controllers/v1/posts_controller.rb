@@ -53,7 +53,7 @@ class PostsController < ApplicationController
 	end
 
 	def post_params
-    	params.require(:post).permit(:title, :url)
+    	params.require(:post).permit(:title, :url, :tag_list)
     end
 
     def check_user
@@ -64,6 +64,11 @@ class PostsController < ApplicationController
     end
 
     def filter_query
+    	if params[:tag]
+
+    		tag =  ActsAsTaggableOn::Tag.find_by(:name => params[:tag])
+    		@posts = @posts.tagged_with(@tag.name).order("created_at DESC")
+    	end
     	if params[:user] && (user = User.find_by(name: params[:user]))
 			@posts = @posts.where(:user_id: user.id) if params[:user]
 		end
