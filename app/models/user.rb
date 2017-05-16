@@ -4,6 +4,7 @@ class User < ApplicationRecord
 	acts_as_followable
 	acts_as_follower
 	acts_as_voter
+	has_many :posts, dependent: :destroy
 	validates :name, 
 	uniqueness: { case_sensitive: false }, 
 	presence: true,

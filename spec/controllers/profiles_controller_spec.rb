@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProfileController, type: :controller do
+RSpec.describe V1::ProfilesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
