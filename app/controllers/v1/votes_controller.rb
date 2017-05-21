@@ -1,4 +1,4 @@
-class VotesController < ApplicationController
+class V1::VotesController < ApplicationController
 	before_filter :find_post
 	before_action :authenticate_user
 

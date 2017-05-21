@@ -1,6 +1,8 @@
 class V1::UsersController < ApplicationController
   before_action :authenticate_user, except: [:create]
+  before_action :set_current_user, except: [:create]
   def show
+    
   end
 
 
@@ -33,5 +35,9 @@ class V1::UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password)
+  end
+
+  def set_current_user
+    @current_user = current_user
   end
 end

@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class V1::TagsController < ApplicationController
 	
 
 	def index

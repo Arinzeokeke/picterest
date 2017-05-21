@@ -1,6 +1,7 @@
 class V1::ProfilesController < ApplicationController
+  before_action :get_profile, except: [:index]
   def show
-  	@user = User.find(params[:id])
+  	
   end
 
   def index
@@ -20,6 +21,6 @@ class V1::ProfilesController < ApplicationController
 
   private
   def get_profile
-  	@user = User.find_by(username: params[:username]) if params[:username]
+  	@user = User.find_by(name: params[:username]) if params[:username]
   end
 end
