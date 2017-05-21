@@ -7,7 +7,7 @@ end
 json.tags post.tag_list
 json.author do
 
-	json.partial! partial: 'v1/profiles/user',  locals: { profile: post.user, current_user: nil }
+	json.partial! partial: 'v1/profiles/user',  locals: { profile: post.user }
 end
 
 

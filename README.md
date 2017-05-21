@@ -32,7 +32,7 @@
 ```JSON
 {
   "auth": {
-  	"jwt": <YOUR JWT TOKEN>
+  	"jwt": "<YOUR JWT TOKEN>"
   }
 }
 ```

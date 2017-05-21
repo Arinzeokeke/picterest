@@ -1,1 +1,1 @@
-json.profiles @users, partial: 'v1/profiles/user', as: :profile, current_user: @current_user
+json.profiles @users, partial: 'v1/profiles/user', as: :profile
