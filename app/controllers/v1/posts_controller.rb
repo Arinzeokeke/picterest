@@ -66,7 +66,7 @@ class V1::PostsController < ApplicationController
 
 	private
 	def find_post
-		@post = Post.find(params[:id]) if params[:id]
+		@post = Post.friendly.find(params[:id]) if params[:id]
 	end
 
 	def post_params
