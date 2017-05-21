@@ -30,7 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'acts_as_follower', github: 'Arinzeokeke/acts_as_follower', branch: 'master'
 
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'acts-as-taggable-on' #, '~> 3.5.0'
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master' #, '~> 3.5.0'
 gem 'knock'
 gem 'jwt'
 gem 'rack-cors' #, '~> 0.4.0'

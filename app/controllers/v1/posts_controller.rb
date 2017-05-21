@@ -5,18 +5,19 @@ class V1::PostsController < ApplicationController
 
 
 	def index
-		if params[:liked] && User.find_by(name: params[:liked])
+
+		if params[:liked].present? #&& User.find_by(name: params[:liked])
 			user = User.find_by(name: params[:liked])
 			@posts = user.get_up_voted Post
 		else
 			@posts = Post.all
 		end
-		
+
 		filter_query
 	end
 
 	def create
-		@post = current_user.post.new(post_params)
+		@post = current_user.posts.new(post_params)
 		if @post.save
 			render 'v1/posts/show'
 		else
@@ -69,22 +70,23 @@ class V1::PostsController < ApplicationController
 	end
 
 	def post_params
-    	params.require(:post).permit(:title, :url, :tag_list)
+
+    	params.require(:post).permit(:title, :url, :tag_list => [])
     end
 
 
 
     def filter_query
-    	if params[:tag]
+    	if params[:tag].present?
 
     		tag =  ActsAsTaggableOn::Tag.find_by(:name => params[:tag])
-    		@posts = @posts.tagged_with(@tag.name).order("created_at DESC")
+    		@posts = @posts.tagged_with(tag.name).order("created_at DESC")
     	end
-    	if params[:author] && (user = User.find_by(name: params[:user]))
-			@posts = @posts.where(user_id: user.id) if params[:user]
+    	if params[:author].present? && (user = User.find_by(name: params[:author]))
+			@posts = @posts.where(user_id: user.id) #if params[:author].present?
 		end
-		@posts = @posts.limit(params[:limit].to_i) if params[:limit]
-		@posts = @posts.offset(params[:offset].to_i) if params[:offset]
-		@posts = @posts.order(params[:order]) if params[:order] && ['desc', 'asc'].include?(params[:order])
+		@posts = @posts.limit(params[:limit].to_i) if params[:limit].present?
+		@posts = @posts.offset(params[:offset].to_i) if params[:offset].present?
+		@posts = @posts.order("created_at #{params[:order]}") if params[:order].present? && ['desc', 'asc'].include?(params[:order].downcase)
     end
 end
