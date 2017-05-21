@@ -39,13 +39,14 @@ class V1::PostsController < ApplicationController
 
 	def update
 		if current_user != @user
+			@post.slug = nil
 			if @post.update(post_params)
 				render 'v1/posts/show'
 			else
 				render json: { errors: @post.errors}, status: :unprocessable_entity
 			end
 		else
-			render json: {error: "Forbidden. You are not the owner of post"}, status: 400
+			render json: {error: "Forbidden. You are not the owner of post"}, status: 403
 		end
 	end
 
@@ -57,7 +58,7 @@ class V1::PostsController < ApplicationController
 			@post.destroy
     		render json: {message: 'post deleted'}, status: 200		
     	else
-    		render json: {error: "Forbidden. You are not the owner of post"}, status: 400
+    		render json: {error: "Forbidden. You are not the owner of post"}, status: 403
 		end
 
 	end
@@ -85,8 +86,13 @@ class V1::PostsController < ApplicationController
     	if params[:author].present? && (user = User.find_by(name: params[:author]))
 			@posts = @posts.where(user_id: user.id) #if params[:author].present?
 		end
-		@posts = @posts.limit(params[:limit].to_i) if params[:limit].present?
+		if params[:limit].present?
+			@posts = @posts.limit(params[:limit].to_i) 
+		else
+			@posts = @posts.limit(25)
+		end
 		@posts = @posts.offset(params[:offset].to_i) if params[:offset].present?
 		@posts = @posts.order("created_at #{params[:order]}") if params[:order].present? && ['desc', 'asc'].include?(params[:order].downcase)
+    	
     end
 end

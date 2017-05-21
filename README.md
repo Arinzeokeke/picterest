@@ -60,93 +60,62 @@
 }
 ```
 
-### Multiple Articles
+### Multiple Posts
 
 ```JSON
 {
-  "articles":[{
-    "slug": "how-to-train-your-dragon",
-    "title": "How to train your dragon",
-    "description": "Ever wonder how?",
-    "body": "It takes a Jacobian",
-    "tagList": ["dragons", "training"],
-    "createdAt": "2016-02-18T03:22:56.637Z",
-    "updatedAt": "2016-02-18T03:48:35.824Z",
-    "favorited": false,
-    "favoritesCount": 0,
-    "author": {
-      "username": "jake",
-      "bio": "I work at statefarm",
-      "image": "https://i.stack.imgur.com/xHWG8.jpg",
-      "following": false
-    }
-  }, {
-    
-    "slug": "how-to-train-your-dragon-2",
-    "title": "How to train your dragon 2",
-    "description": "So toothless",
-    "body": "It a dragon",
-    "tagList": ["dragons", "training"],
-    "createdAt": "2016-02-18T03:22:56.637Z",
-    "updatedAt": "2016-02-18T03:48:35.824Z",
-    "favorited": false,
-    "favoritesCount": 0,
-    "author": {
-      "username": "jake",
-      "bio": "I work at statefarm",
-      "image": "https://i.stack.imgur.com/xHWG8.jpg",
-      "following": false
-    }
-  }],
-  "articlesCount": 2
-}
-```
-
-### Single Comment
-
-```JSON
-{
-  "comment": {
+  "posts":[{
     "id": 1,
+    "slug": "the-keys-to-success",
+    "title": "The Keys To Success",
+    "url": "imgur.com/dg26gs",
+    "tagList": ["djkhaled", "asahd", "major keys"],
     "createdAt": "2016-02-18T03:22:56.637Z",
-    "updatedAt": "2016-02-18T03:22:56.637Z",
-    "body": "It takes a Jacobian",
+    "updatedAt": "2016-02-18T03:48:35.824Z",
+    "liked": false,
+    "likes": 234,
     "author": {
-      "username": "jake",
-      "bio": "I work at statefarm",
-      "image": "https://i.stack.imgur.com/xHWG8.jpg",
-      "following": false
-    }
+  	"id": 1,
+    "name": "djkhaled",
+    "email": "djkhaled@wethebest.com",
+    "you_follow": true,
+    "follows_you": false,
+    "following": 200,
+    "followers": 100
+  },
+   {
+    "id": 2,
+    "slug": "has-the-drake-vocals-come-in-yet",
+    "title": "Has The Drake Vocals Come In Yet",
+    "url": "imgur.com/dg26gs",
+    "tagList": ["djkhaled", "asahd", "major keys", "grateful"],
+    "createdAt": "2016-07-18T03:22:56.637Z",
+    "updatedAt": "2016-07-18T03:48:35.824Z",
+    "liked": false,
+    "likes": 264,
+    "author": {
+  	"id": 1,
+    "name": "djkhaled",
+    "email": "djkhaled@wethebest.com",
+    "you_follow": true,
+    "follows_you": false,
+    "following": 200,
+    "followers": 100
   }
+  ],
+  "count": 2
 }
 ```
 
-### Multiple Comments
-
-```JSON
-{
-  "comments": [{
-    "id": 1,
-    "createdAt": "2016-02-18T03:22:56.637Z",
-    "updatedAt": "2016-02-18T03:22:56.637Z",
-    "body": "It takes a Jacobian",
-    "author": {
-      "username": "jake",
-      "bio": "I work at statefarm",
-      "image": "https://i.stack.imgur.com/xHWG8.jpg",
-      "following": false
-    }
-  }]
-}
-```
 
 ### List of Tags
 
 ```JSON
 {
   "tags": [
-    "reactjs",
-    "angularjs"
+    "djkhaled",
+    "asahd",
+    "drake"
   ]
 }
 ```
@@ -178,14 +147,14 @@ If a request fails any validations, expect a 422 and errors in the following for
 
 ### Authentication:
 
-`POST /api/users/login`
+`POST /api/v1/token`
 
 Example request body:
 ```JSON
 {
   "user":{
-    "email": "jake@jake.jake",
-    "password": "jakejake"
+    "email": "djkhaled@wethebest.com",
+    "password": "ILOVEYOUASAHD"
   }
 }
 ```
@@ -197,28 +166,28 @@ Required fields: `email`, `password`
 
 ### Registration:
 
-`POST /api/users`
+`POST /api/v1/users`
 
 Example request body:
 ```JSON
 {
   "user":{
-    "username": "Jacob",
-    "email": "jake@jake.jake",
-    "password": "jakejake"
+    "name": "djkhaled",
+    "email": "djkhaled@wethebest.com",
+    "password": "ILOVEYOUASAHD"
   }
 }
 ```
 
 No authentication required, returns a [User](#users-for-authentication)
 
-Required fields: `email`, `username`, `password`
+Required fields: `email`, `name`, `password`
 
 
 
 ### Get Current User
 
-`GET /api/user`
+`GET /api/v1/user`
 
 Authentication required, returns a [User](#users-for-authentication) that's the current user
 
@@ -226,15 +195,13 @@ Authentication required, returns a [User](#users-for-authentication) that's the 
 
 ### Update User
 
-`PUT /api/user`
+`PUT /api/v1/user`
 
 Example request body:
 ```JSON
 {
   "user":{
-    "email": "jake@jake.jake",
-    "bio": "I like to skateboard",
-    "image": "https://i.stack.imgur.com/xHWG8.jpg"
+	"name": "djkhaledmusic"
   }
 }
 ```
@@ -242,21 +209,41 @@ Example request body:
 Authentication required, returns the [User](#users-for-authentication)
 
 
-Accepted fields: `email`, `username`, `password`, `image`, `bio`
+Accepted fields: `email`, `name`, `password`
+
+
+### All Profiles
+`GET /api/v1/profiles`
+
+Authentication optional, returns a list of all profiles
 
 
 
 ### Get Profile
 
-`GET /api/profiles/:username`
+`GET /api/v1/profiles/:username`
 
 Authentication optional, returns a [Profile](#profile)
 
 
 
+### Get Profile Followers
+
+`GET /api/v1/profiles/:username/followers`
+
+Authetication optional, returns lists of profile who follow :username
+
+### Get Profile Follows
+
+`GET /api/v1/profiles/:username/following`
+
+Authetication optional, returns lists of profile whom :username follow 
+
+
+
 ### Follow user
 
-`POST /api/profiles/:username/follow`
+`POST /api/v1/profiles/:username/follow`
 
 Authentication required, returns a [Profile](#profile)
 
@@ -266,7 +253,7 @@ No additional parameters required
 
 ### Unfollow user
 
-`DELETE /api/profiles/:username/follow`
+`DELETE /api/v1/profiles/:username/follow`
 
 Authentication required, returns a [Profile](#profile)
 
@@ -274,158 +261,130 @@ No additional parameters required
 
 
 
-### List Articles
+### List posts
 
-`GET /api/articles`
+`GET /api/v1/posts`
 
-Returns most recent articles globally be default, provide `tag`, `author` or `favorited` query parameter to filter results
+Returns most recent posts globally by default, provide `tag`, `author` or `liked` query parameter to filter results
 
 Query Parameters:
 
 Filter by tag:
 
-`?tag=AngularJS`
+`?tag=memes`
 
 Filter by author:
 
-`?author=jake`
+`?author=djkhaled`
 
-Favorited by user:
+Liked by user:
 
-`?favorited=jake`
+`?liked=asahdkhaled`
 
-Limit number of articles (default is 20):
+Limit number of posts (default is 25):
 
 `?limit=20`
 
-Offset/skip number of articles (default is 0):
+Offset/skip number of posts (default is 0):
 
 `?offset=0`
 
-Authentication optional, will return [multiple articles](#multiple-articles), ordered by most recent first
+Authentication optional, will return [multiple posts](#multiple-posts)
 
 
 
-### Feed Articles
+### Feed posts
 
-`GET /api/articles/feed`
+`GET /api/v1/posts/feed`
 
-Can also take `limit` and `offset` query parameters like [List Articles](#list-articles)
+Can also take `limit` and `offset` query parameters like [List posts](#list-posts)
 
-Authentication required, will return [multiple articles](#multiple-articles) created by followed users, ordered by most recent first.
+Authentication required, will return [multiple posts](#multiple-posts) created by followed users
 
 
-### Get Article
+### Get Post
 
-`GET /api/articles/:slug`
+`GET /api/v1/posts/:slug`
 
-No authentication required, will return [single article](#single-article)
+No authentication required, will return [single Post](#single-Post)
 
-### Create Article
+### Create Post
 
-`POST /api/articles`
+`POST /api/v1/posts`
 
 Example request body:
 
 ```JSON
 {
-  "article": {
-    "title": "How to train your dragon",
-    "description": "Ever wonder how?",
-    "body": "You have to believe",
-    "tagList": ["reactjs", "angularjs", "dragons"]
+  "Post": {
+    "title": "The key is to believe. smh",
+    "url": "imgur.com/5f4dd",
+    "tagList": ["khaledquotes", "djkhaled", "wethebest"]
   }
 }
 ```
 
-Authentication required, will return an [Article](#single-article)
+Authentication required, will return an [Post](#single-Post)
 
-Required fields: `title`, `description`, `body`
+Required fields: `title`, `url`
 
 Optional fields: `tagList` as an array of Strings
 
 
 
-### Update Article
+### Update Post
 
-`PUT /api/articles/:slug`
+`PUT /api/v1/posts/:slug`
 
 Example request body:
 
 ```JSON
 {
-  "article": {
-    "title": "Did you train your dragon?"
+  "Post": {
+    "title": "MY SON ASAHD"
   }
 }
 ```
 
-Authentication required, returns the updated [Article](#single-article)
+Authentication required, returns the updated [Post](#single-Post)
 
-Optional fields: `title`, `description`, `body`
+Optional fields: `title`, `url`
 
 The `slug` also gets updated when the `title` is changed
 
 
-### Delete Article
+### Delete Post
 
-`DELETE /api/articles/:slug`
-
-Authentication required
-
-
-
-### Add Comments to an Article
-
-`POST /api/articles/:slug/comments`
-
-Example request body:
-
-```JSON
-{
-  "comment": {
-    "body": "His name was my name too."
-  }
-}
-```
-
-Authentication required, returns the created [Comment](#single-comment)
-
-Required fields: `body`
-
-
-
-### Get Comments from an Article
-
-`GET /api/articles/:slug/comments`
-
-Authentication optional, returns [multiple comments](#multiple-comments)
-
-
-
-### Delete Comment
-
-`DELETE /api/articles/:slug/comments/:id`
+`DELETE /api/v1/posts/:slug`
 
 Authentication required
 
 
 
-### Favorite Article
+### Liked Posts
 
-`POST /api/articles/:slug/favorite`
+`GET /api/v1/posts/liked`
 
-Authentication required, returns the [Article](#single-article)
+Authentication required. returns list of liked posts by current user
+
+
+
+
+### Like Post
+
+`POST /api/v1/posts/:slug/vote`
+
+Authentication required, returns the [Post](#single-Post)
 
 No additional parameters required
 
 
 
-### Unfavorite Article
+### Unlike Post
 
-`DELETE /api/articles/:slug/favorite`
+`DELETE /api/v1/posts/:slug/vote`
 
-Authentication required, returns the [Article](#single-article)
+Authentication required, returns the [Post](#single-Post)
 
 No additional parameters required
 
@@ -433,6 +392,6 @@ No additional parameters required
 
 ### Get Tags
 
-`GET /api/tags`
+`GET /api/v1/tags`
 
 No authentication required, returns a [List of Tags](#list-of-tags)
