@@ -1,5 +1,5 @@
 
-# Docmentation
+# Documentation
 
 ## API Endpoints
 
