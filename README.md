@@ -1,4 +1,8 @@
-# Picterest API Spec. (yes, the name is dumb. shut up)
+
+#Docmentation
+
+##API Endpoints
+
 
 ### Authentication Header:
 
