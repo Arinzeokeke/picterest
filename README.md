@@ -86,6 +86,7 @@
     "follows_you": false,
     "following": 200,
     "followers": 100
+  }
   },
    {
     "id": 2,
@@ -105,6 +106,7 @@
     "follows_you": false,
     "following": 200,
     "followers": 100
+  }
   }
   ],
   "count": 2
