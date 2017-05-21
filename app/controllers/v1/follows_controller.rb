@@ -1,6 +1,8 @@
 class V1::FollowsController < ApplicationController
 	before_action :authenticate_user, except: [:show]
 	before_action :get_user
+	before_action :get_current_user, except: [:show]
+
 
 	def show
 		@users = @user.following_users
@@ -19,6 +21,9 @@ class V1::FollowsController < ApplicationController
 
 	private
 	def get_user
-		@user = User.find_by!(name: params[:profile_username])
+		@user = User.find_by(name: params[:profile_username])
+    	if @user.nil?
+      		render json: {error: "User doesn't exist"}, status: 404
+    	end
 	end
 end

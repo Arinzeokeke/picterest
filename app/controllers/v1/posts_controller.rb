@@ -1,12 +1,12 @@
 class V1::PostsController < ApplicationController
 	before_action :find_post, except: [:index, :create]
 	before_action :authenticate_user, only: [:create, :update, :destroy, :feed, :liked]
-	#before_action :check_user, only: [:update, :destroy]
+	before_action :get_current_user, only: [:create, :update, :destroy, :feed, :liked]
 
 
 	def index
 
-		if params[:liked].present? #&& User.find_by(name: params[:liked])
+		if params[:liked].present? && User.find_by(name: params[:liked])
 			user = User.find_by(name: params[:liked])
 			@posts = user.get_up_voted Post
 		else
@@ -53,7 +53,7 @@ class V1::PostsController < ApplicationController
 	end
 
 	def destroy
-		if current_user != @post.user
+		if current_user == @post.user
 			@post.destroy
     		render json: {message: 'post deleted'}, status: 200		
     	else
