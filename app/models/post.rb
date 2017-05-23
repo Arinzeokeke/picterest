@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
   extend FriendlyId
-  friendly_id :url, use: :slugged
+  friendly_id :title, use: :slugged
   
   belongs_to :user
   acts_as_votable
