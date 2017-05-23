@@ -59,13 +59,17 @@ FriendlyId.defaults do |config|
   #
   # config.sequence_separator = '-'
   #
+  # Note that you must use the :slugged addon **prior** to the line which
+  # configures the sequence separator, or else FriendlyId will raise an undefined
+  # method error.
+  #
   #  ## Tips and Tricks
   #
   #  ### Controlling when slugs are generated
   #
   # As of FriendlyId 5.0, new slugs are generated only when the slug field is
   # nil, but if you're using a column as your base method can change this
-  # behavior by overriding the `should_generate_new_friendly_id` method that
+  # behavior by overriding the `should_generate_new_friendly_id?` method that
   # FriendlyId adds to your model. The change below makes FriendlyId 5.0 behave
   # more like 4.0.
   #

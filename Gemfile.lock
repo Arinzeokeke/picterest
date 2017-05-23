@@ -14,6 +14,14 @@ GIT
     acts-as-taggable-on (5.0.0)
       activerecord (>= 4.2.8)
 
+GIT
+  remote: https://github.com/norman/friendly_id.git
+  revision: 718b1bcad8e47ccde8a4b559b734505a49d313a7
+  branch: master
+  specs:
+    friendly_id (5.2.1)
+      activerecord (>= 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,8 +79,6 @@ GEM
     faker (1.7.3)
       i18n (~> 0.5)
     ffi (1.9.18)
-    friendly_id (5.1.0)
-      activerecord (>= 4.0.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.1)
@@ -193,7 +199,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails (~> 4.0)
   faker
-  friendly_id (~> 5.1.0)
+  friendly_id!
   jbuilder (~> 2.5)
   jwt
   knock
