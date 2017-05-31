@@ -17,6 +17,7 @@ class V1::PostsController < ApplicationController
 	end
 
 	def create
+		#byebug
 		@post = current_user.posts.new(post_params)
 		if @post.save
 			render 'v1/posts/show'
