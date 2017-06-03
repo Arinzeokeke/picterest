@@ -22,7 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors'
+#gem 'rack-cors'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -30,7 +30,7 @@ gem 'acts_as_follower', github: 'Arinzeokeke/acts_as_follower', branch: 'master'
 
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master' #, '~> 3.5.0'
-gem 'knock'
+gem 'knock', github: 'Arinzeokeke/knock', branch: 'soft-authentication'
 gem 'jwt'
 gem 'rack-cors' #, '~> 0.4.0'
 gem 'friendly_id', github: 'norman/friendly_id', branch: 'master'

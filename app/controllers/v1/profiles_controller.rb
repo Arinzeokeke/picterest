@@ -1,5 +1,7 @@
 class V1::ProfilesController < ApplicationController
   before_action :get_profile, except: [:index]
+  before_action :soft_authenticate_user
+  before_action :set_current_user
   def show
   	
   end

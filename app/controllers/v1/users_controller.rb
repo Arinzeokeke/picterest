@@ -9,6 +9,7 @@ class V1::UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
+      @current_user = @user
       render :create
     else
       render json: { errors: @user.errors}, status: :unprocessable_entity
