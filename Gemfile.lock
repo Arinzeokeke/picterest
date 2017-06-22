@@ -8,8 +8,8 @@ GIT
 
 GIT
   remote: https://github.com/Arinzeokeke/knock.git
-  revision: b66e40f7f70d177ca80d77cca788a85a2490e3cc
-  branch: soft-authentication
+  revision: 7a3b042518235f14e1a29b44b1ac3bddd06cb163
+  branch: fix-generator
   specs:
     knock (2.1.1)
       bcrypt (~> 3.1)

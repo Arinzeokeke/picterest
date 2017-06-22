@@ -30,7 +30,7 @@ gem 'acts_as_follower', github: 'Arinzeokeke/acts_as_follower', branch: 'master'
 
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master' #, '~> 3.5.0'
-gem 'knock', github: 'Arinzeokeke/knock', branch: 'soft-authentication'
+gem 'knock', github: 'Arinzeokeke/knock', branch: 'fix-generator'
 gem 'jwt'
 gem 'rack-cors' #, '~> 0.4.0'
 gem 'friendly_id', github: 'norman/friendly_id', branch: 'master'
