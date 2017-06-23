@@ -23,7 +23,7 @@ class V1::FollowsController < ApplicationController
 	def get_user
 		@user = User.find_by(name: params[:profile_username])
     	if @user.nil?
-      		render json: {error: "User doesn't exist"}, status: 404
+      		render json: {errors: ["User doesn't exist"]}, status: 404
     	end
 	end
 end

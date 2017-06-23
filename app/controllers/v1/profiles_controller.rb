@@ -26,7 +26,7 @@ class V1::ProfilesController < ApplicationController
   def get_profile
   	@user = User.find_by(name: params[:username]) if params[:username]
     if @user.nil?
-      render json: {error: 'User not found'}, status: 404
+      render json: {errors: ['User not found']}, status: 404
     end
   end
 end

@@ -47,7 +47,7 @@ class V1::PostsController < ApplicationController
 				render json: { errors: @post.errors}, status: :unprocessable_entity
 			end
 		else
-			render json: {error: "Forbidden. You are not the owner of post"}, status: 403
+			render json: {errors: ["Forbidden. You are not the owner of post"]}, status: 403
 		end
 	end
 
@@ -59,7 +59,7 @@ class V1::PostsController < ApplicationController
 			@post.destroy
     		render json: {message: 'post deleted'}, status: 200		
     	else
-    		render json: {error: "Forbidden. You are not the owner of post"}, status: 403
+    		render json: {errors: ["Forbidden. You are not the owner of post"]}, status: 403
 		end
 
 	end
