@@ -12,7 +12,7 @@ class V1::UsersController < ApplicationController
       @current_user = @user
       render :create
     else
-      render json: { errors: @user.errors}, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_message }, status: :unprocessable_entity
     end
   end
 
@@ -23,7 +23,7 @@ class V1::UsersController < ApplicationController
      
    else
     
-     render json: { errors: current_user.errors }, status: :unprocessable_entity
+     render json: { errors: current_user.errors.full_message }, status: :unprocessable_entity
    end
   end
 

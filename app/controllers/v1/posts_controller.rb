@@ -22,7 +22,7 @@ class V1::PostsController < ApplicationController
 		if @post.save
 			render 'v1/posts/show'
 		else
-			render json: { errors: @post.errors}, status: :unprocessable_entity
+			render json: { errors: @post.errors.full_message }, status: :unprocessable_entity
 		end
 	end
 
@@ -44,7 +44,7 @@ class V1::PostsController < ApplicationController
 			if @post.update(post_params)
 				render 'v1/posts/show'
 			else
-				render json: { errors: @post.errors}, status: :unprocessable_entity
+				render json: { errors: @post.errors.full_message }, status: :unprocessable_entity
 			end
 		else
 			render json: {errors: ["Forbidden. You are not the owner of post"]}, status: 403
