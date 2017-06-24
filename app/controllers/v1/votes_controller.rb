@@ -14,6 +14,6 @@ class V1::VotesController < ApplicationController
 
 	private
 	def find_post
-		@post = Post.find(params[:post_id]) if params[:post_id]
+		@post = Post.friendly.find(params[:post_id]) if params[:post_id]
 	end
 end
