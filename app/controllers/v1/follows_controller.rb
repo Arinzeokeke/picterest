@@ -2,7 +2,7 @@ class V1::FollowsController < ApplicationController
 	before_action :authenticate_user, except: [:show]
 	before_action :soft_authenticate_user, only: [:show]
 	before_action :get_user
-	before_action :get_current_user, except: [:show]
+	before_action :set_current_user
 
 
 	def show

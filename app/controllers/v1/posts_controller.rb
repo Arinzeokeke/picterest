@@ -2,8 +2,7 @@ class V1::PostsController < ApplicationController
 	before_action :find_post, except: [:index, :create]
 	before_action :authenticate_user, only: [:create, :update, :destroy, :feed, :liked]
 	before_action :soft_authenticate_user, except: [:create, :update, :destroy, :feed, :liked] 
-	before_action :get_current_user, only: [:create, :update, :destroy, :feed, :liked]
-
+	before_action :set_current_user
 
 	def index
 

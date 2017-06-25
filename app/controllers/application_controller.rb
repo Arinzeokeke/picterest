@@ -2,8 +2,8 @@ class ApplicationController < ActionController::API
 	include Knock::Authenticable
 	#before_action :underscore_params!
 	
-	def get_current_user
-		@current_user = current_user
+	def set_current_user
+		@current_user = current_user if current_user
 	end
 
 	# private
