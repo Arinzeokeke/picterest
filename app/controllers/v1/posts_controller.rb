@@ -85,15 +85,16 @@ class V1::PostsController < ApplicationController
     		@posts = @posts.tagged_with(tag.name).order("created_at DESC")
     	end
     	if params[:author].present? && (user = User.find_by(name: params[:author]))
-			@posts = @posts.where(user_id: user.id) #if params[:author].present?
-		end
-		if params[:limit].present?
-			@posts = @posts.limit(params[:limit].to_i) 
-		else
-			@posts = @posts.limit(25)
-		end
-		@posts = @posts.offset(params[:offset].to_i) if params[:offset].present?
-		@posts = @posts.order("created_at #{params[:order]}") if params[:order].present? && ['desc', 'asc'].include?(params[:order].downcase)
-    	
+				@posts = @posts.where(user_id: user.id) #if params[:author].present?
+			end
+
+			@posts_size = @posts.size
+			@posts = @posts.offset(params[:offset].to_i) if params[:offset].present?
+
+			
+			@posts = @posts.limit(params[:limit].to_i) if params[:limit].present?
+
+			@posts = @posts.order("created_at #{params[:order]}") if params[:order].present? && ['desc', 'asc'].include?(params[:order].downcase)
     end
+
 end

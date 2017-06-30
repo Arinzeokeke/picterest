@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523064837) do
+ActiveRecord::Schema.define(version: 20170630152850) do
 
   create_table "follows", force: :cascade do |t|
     t.string "followable_type"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20170523064837) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   create_table "votes", force: :cascade do |t|
