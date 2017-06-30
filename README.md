@@ -19,6 +19,7 @@
   	"id": 1,
     "name": "djkhaled",
     "email": "djkhaled@wethebest.com",
+    "url": "imgur.com/sjjcu88",
     "you_follow": true,
     "follows_you": false,
     "following": 200,
@@ -180,7 +181,8 @@ Example request body:
   "user":{
     "name": "djkhaled",
     "email": "djkhaled@wethebest.com",
-    "password": "ILOVEYOUASAHD"
+    "password": "ILOVEYOUASAHD",
+    "url": "imgur.com/sjjcu88"
   }
 }
 ```
@@ -188,6 +190,8 @@ Example request body:
 No authentication required, returns a [User](#users-for-authentication)
 
 Required fields: `email`, `name`, `password`
+
+Optional fields: `url`
 
 
 
@@ -215,7 +219,7 @@ Example request body:
 Authentication required, returns the [User](#users-for-authentication)
 
 
-Accepted fields: `email`, `name`, `password`
+Accepted fields: `email`, `name`, `password`, `url`
 
 
 ### All Profiles
