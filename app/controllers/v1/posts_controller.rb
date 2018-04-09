@@ -66,35 +66,35 @@ class V1::PostsController < ApplicationController
 
 
 
+
 	private
-	def find_post
-		@post = Post.friendly.find(params[:id]) if params[:id]
-	end
+		def find_post
+			@post = Post.friendly.find(params[:id]) if params[:id]
+		end
 
-	def post_params
-
-    	params.require(:post).permit(:title, :url, :tag_list => [])
-    end
-
+		def post_params
+			params.require(:post).permit(:title, :url, :tag_list => [])
+		end
 
 
-    def filter_query
-    	if params[:tag].present?
 
-    		tag =  ActsAsTaggableOn::Tag.find_by(:name => params[:tag])
-    		@posts = @posts.tagged_with(tag.name).order("created_at DESC")
-    	end
-    	if params[:author].present? && (user = User.find_by(name: params[:author]))
-				@posts = @posts.where(user_id: user.id) #if params[:author].present?
+		def filter_query
+			if params[:tag].present?
+
+				tag =  ActsAsTaggableOn::Tag.find_by(:name => params[:tag])
+				@posts = @posts.tagged_with(tag.name).order("created_at DESC")
 			end
+			if params[:author].present? && (user = User.find_by(name: params[:author]))
+					@posts = @posts.where(user_id: user.id) #if params[:author].present?
+				end
 
-			@posts_size = @posts.size
-			@posts = @posts.offset(params[:offset].to_i) if params[:offset].present?
+				@posts_size = @posts.size
+				@posts = @posts.offset(params[:offset].to_i) if params[:offset].present?
 
-			
-			@posts = @posts.limit(params[:limit].to_i) if params[:limit].present?
+				
+				@posts = @posts.limit(params[:limit].to_i) if params[:limit].present?
 
-			@posts = @posts.order("created_at #{params[:order]}") if params[:order].present? && ['desc', 'asc'].include?(params[:order].downcase)
-    end
+				@posts = @posts.order("created_at #{params[:order]}") if params[:order].present? && ['desc', 'asc'].include?(params[:order].downcase)
+		end
 
 end
